@@ -27,7 +27,7 @@ public class PilhaLista<T> implements Pilha<T>{
     }
 
     @Override
-    public T pop() {
+    public T pop() throws Exception{
         No no = null;
         for (int i = 0; i < (contador - 1); i++){
             if (i == 0){

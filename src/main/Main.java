@@ -1,31 +1,29 @@
 package main;
 
-import estruturas.PilhaLista;
-import estruturas.PilhaVetor;
+import estruturas.Disco;
+import estruturas.Pilha;
+import game.Jogo;
 
 public class Main {
     public static void main(String[] args) throws Exception{
-        PilhaLista pl = new PilhaLista();
-        Integer integer = 18;
-        pl.push("Pedro");
-        pl.push(19);
-        pl.push(false);
-        pl.push(integer);
-        pl.pop();
-        pl.pop();
-        pl.pop();
+        System.out.println(args[0]);
+        Pilha<Disco> origem = null;
+        Pilha<Disco> aux = null;
+        Pilha<Disco> destino = null;
 
-        System.out.println(pl.toString());
-        PilhaVetor pl2 = new PilhaVetor();
-        pl2.push("Pedro");
-        pl2.push(19);
-        pl2.push(false);
-        pl2.push(integer);
-        pl2.pop();
-        pl2.pop();
-        pl2.pop();
-        System.out.println(pl2.toString());
-        System.out.println("----");
-        System.out.println("PL: " + pl.vazia() + ", PL2: " + pl2.vazia());
+        if (args[0].equalsIgnoreCase("sobre")){
+            Jogo.info();
+        } else{
+            origem = Jogo.getPilha(args[0]);
+            aux = Jogo.getPilha(args[0]);
+            destino = Jogo.getPilha(args[0]);
+
+            origem.push(Jogo.getDisco(1));
+            origem.push(Jogo.getDisco(2));
+            origem.push(Jogo.getDisco(3));
+            origem.push(Jogo.getDisco(4));
+            origem.push(Jogo.getDisco(5));
+        }
+
     }
 }
