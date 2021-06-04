@@ -15,4 +15,9 @@ public class Disco {
     public void setDiametro(Integer diametro) {
         this.diametro = diametro;
     }
+
+    @Override
+    public String toString() {
+        return diametro.toString();
+    }
 }

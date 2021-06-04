@@ -1,29 +1,29 @@
 package main;
 
-import estruturas.Disco;
-import estruturas.Pilha;
-import game.Jogo;
+import game.JogoControle;
+
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws Exception{
         System.out.println(args[0]);
-        Pilha<Disco> origem = null;
-        Pilha<Disco> aux = null;
-        Pilha<Disco> destino = null;
+        Scanner scanner = new Scanner(System.in);
 
         if (args[0].equalsIgnoreCase("sobre")){
-            Jogo.info();
+            JogoControle.getInfo();
         } else{
-            origem = Jogo.getPilha(args[0]);
-            aux = Jogo.getPilha(args[0]);
-            destino = Jogo.getPilha(args[0]);
-
-            origem.push(Jogo.getDisco(1));
-            origem.push(Jogo.getDisco(2));
-            origem.push(Jogo.getDisco(3));
-            origem.push(Jogo.getDisco(4));
-            origem.push(Jogo.getDisco(5));
+            JogoControle.iniciar(args[0]);
         }
+        String resposta = "";
+        do {
+            JogoControle.atualizarJogo();
+            System.out.println("Digite o numero da pilha de origem");
+            Integer origem = scanner.nextInt();
+            System.out.println("Digite o numero da pilha de destino");
+            Integer destino = scanner.nextInt();
+//            JogoControle.desempilhar(origem, destino);
+
+        } while (!resposta.equalsIgnoreCase("stop"));
 
     }
 }

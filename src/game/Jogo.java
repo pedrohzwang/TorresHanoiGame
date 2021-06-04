@@ -2,20 +2,37 @@ package game;
 
 import estruturas.*;
 
+import java.io.IOException;
+
 public class Jogo {
 
-    public static void info() {
+    protected static void getInfo() {
         System.out.println("Integrantes: Henrique Luiz Andrade Heemann e" +
                 " Pedro Henrique Nunes Zwang");
     }
 
-    public static Pilha<Disco> getPilha(String tipo){
+    protected static Pilha<Disco> getPilha(String tipo){
         return PilhaFactory.getPilha(tipo);
     }
 
-    public static Disco getDisco(Integer diametro){
+    protected static Disco getDisco(Integer diametro){
         return new Disco(diametro);
     }
 
+    protected static void limparConsole() throws IOException, InterruptedException {
+        if (System.getProperty("os.name").contains("Windows")) {
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        }
+        else{
+            Runtime.getRuntime().exec("clear");
+        }
+    }
+
+    protected void getPilhaCorrespondente(Integer id){
+        if (id == 1){
+
+//        return Pilhas.getPilha(id); Pilha<Disco>
+        }
+    }
 
 }
