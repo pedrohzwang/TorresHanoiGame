@@ -25,9 +25,23 @@ public class Disco {
 
     private String desenhar(Integer diametro){
         String desenho = "";
-        if (diametro < 1000){
-            for (int i = 0; i <= diametro; i++){
-                desenho += "=";
+        if (this.diametro < 1000){
+            switch (this.diametro){
+                case 5:
+                    desenho = "=========";
+                    break;
+                case 4:
+                    desenho = " ======= ";
+                    break;
+                case 3:
+                    desenho = "  =====  ";
+                    break;
+                case 2:
+                    desenho = "   ===   ";
+                    break;
+                case 1:
+                    desenho = "    =    ";
+                    break;
             }
         }
         return desenho;
