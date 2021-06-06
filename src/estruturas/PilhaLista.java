@@ -12,6 +12,12 @@ public class PilhaLista<T> implements Pilha<T>{
         this.contador = 0;
     }
 
+    public PilhaLista(PilhaLista<T> original) {
+        this.contador = original.contador;
+        this.primeiro = original.primeiro;
+        this.ultima = original.ultima;
+    }
+
     @Override
     public void push(T obj) throws Exception {
         No novoNo = new No(obj, null);
@@ -27,7 +33,7 @@ public class PilhaLista<T> implements Pilha<T>{
     }
 
     @Override
-    public T pop() {
+    public T pop() throws Exception{
         No no = null;
         for (int i = 0; i < (contador - 1); i++){
             if (i == 0){

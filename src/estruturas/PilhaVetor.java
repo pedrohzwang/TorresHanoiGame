@@ -1,8 +1,6 @@
 package estruturas;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
-import java.util.concurrent.ConcurrentNavigableMap;
 
 public class PilhaVetor<T> implements Pilha<T>{
 
@@ -11,7 +9,12 @@ public class PilhaVetor<T> implements Pilha<T>{
 
     public PilhaVetor() {
         this.contador = 0;
-        vet = (T[])new Object[10];
+        this.vet = (T[])new Object[10];
+    }
+
+    public PilhaVetor(PilhaVetor<T> original) {
+        this.contador = original.contador;
+        this.vet = original.vet;
     }
 
     @Override
