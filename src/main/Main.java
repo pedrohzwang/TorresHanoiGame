@@ -1,29 +1,44 @@
 package main;
 
+import estruturas.Disco;
+import estruturas.Pilha;
 import game.JogoControle;
-
 import java.util.Scanner;
 
 public class Main {
+
+    static Pilha<Disco> origem = null;
+    static Pilha<Disco> aux = null;
+    static Pilha<Disco> destino = null;
+
     public static void main(String[] args) throws Exception{
+
         System.out.println(args[0]);
-        Scanner scanner = new Scanner(System.in);
 
         if (args[0].equalsIgnoreCase("sobre")){
             JogoControle.getInfo();
         } else{
-            JogoControle.iniciar(args[0]);
+            comecar(args);
         }
-        String resposta = "";
-        do {
-            JogoControle.atualizarJogo();
-            System.out.println("Digite o numero da pilha de origem");
-            Integer origem = scanner.nextInt();
-            System.out.println("Digite o numero da pilha de destino");
-            Integer destino = scanner.nextInt();
-//            JogoControle.desempilhar(origem, destino);
 
-        } while (!resposta.equalsIgnoreCase("stop"));
 
     }
+
+    public static void comecar(String[] args) throws Exception {
+        origem = JogoControle.criarPilha(args[0]);
+        aux = JogoControle.criarPilha(args[0]);
+        destino = JogoControle.criarPilha(args[0]);
+        String resposta = "";
+        Scanner scanner = new Scanner(System.in);
+        do {
+            JogoControle.atualizarJogo(origem, aux, destino);
+            System.out.println("Digite o numero da pilha de origem");
+            Integer idOrigem = scanner.nextInt();
+            System.out.println("Digite o numero da pilha de destino");
+            Integer idDestino = scanner.nextInt();
+            JogoControle.desempilhar(idOrigem, idDestino, origem, aux, destino);
+
+        } while (!resposta.equalsIgnoreCase("stop"));
+    }
+
 }

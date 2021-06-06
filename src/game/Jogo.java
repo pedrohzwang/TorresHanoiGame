@@ -28,11 +28,14 @@ public class Jogo {
         }
     }
 
-    protected void getPilhaCorrespondente(Integer id){
-        if (id == 1){
-
-//        return Pilhas.getPilha(id); Pilha<Disco>
+    protected static String desenhaPilha(Pilha<Disco> pilha) throws Exception{
+        Pilha<Disco> pilhaTemp = pilha;
+        String retorno = "";
+        while (!pilhaTemp.vazia()){
+            Disco temp = pilhaTemp.pop();
+            retorno += temp.toString() + "\n";
         }
+        return retorno;
     }
 
 }

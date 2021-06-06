@@ -3,24 +3,14 @@ package game;
 import estruturas.Disco;
 import estruturas.Pilha;
 
-import java.io.IOException;
 
 public class JogoControle {
-
-    private static Pilha<Disco> origem = null;
-    private static Pilha<Disco> aux = null;
-    private static Pilha<Disco> destino = null;
 
     public static void getInfo() {
         Jogo.getInfo();
     }
 
-    public static void iniciar(String args) throws Exception {
-
-        origem = Jogo.getPilha(args);
-        aux = Jogo.getPilha(args);
-        destino = Jogo.getPilha(args);
-
+    public static void iniciar(String args, Pilha<Disco> origem, Pilha<Disco> aux, Pilha<Disco> destino) throws Exception {
         origem.push(Jogo.getDisco(5));
         origem.push(Jogo.getDisco(4));
         origem.push(Jogo.getDisco(3));
@@ -28,27 +18,45 @@ public class JogoControle {
         origem.push(Jogo.getDisco(1));
 
         System.out.println("Pilha origem: " + origem.toString());
-
     }
 
-    public static void desempilhar(Integer idOrigem, Integer idDestino) throws Exception {
-        Integer vet[] = new Integer[2];
-        vet[0] = idOrigem;
-        vet[1] = idDestino;
-        Pilha<Disco> pilhaInicial;
-        Pilha<Disco> pilhaFinal;
-        for (int i = 0; i < vet.length; i++){
-            Integer valor = vet[i];
-            if (valor == 1){
-            }
-        }
-        atualizarJogo();
+    public static Pilha<Disco> criarPilha(String tipo){
+        return Jogo.getPilha(tipo);
     }
 
-    public static void atualizarJogo() throws IOException, InterruptedException {
+    public static void desempilhar(Integer idOrigem, Integer idDestino, Pilha<Disco> origem, Pilha<Disco> aux, Pilha<Disco> destino) throws Exception {
+
+        Pilha<Disco> pilhaOrigem = retornaPilhaInstancia(idOrigem, origem, aux, destino);
+        Pilha<Disco> pilhaDestino = retornaPilhaInstancia(idDestino, origem, aux, destino);
+
+        Disco removido = origem.pop();
+        destino.push(removido);
+        System.out.println(Jogo.desenhaPilha(origem));
+        System.out.println(Jogo.desenhaPilha(aux));
+        System.out.println(Jogo.desenhaPilha(destino));
+        //atualizarJogo();
+    }
+
+    public static void atualizarJogo(Pilha<Disco> origem, Pilha<Disco> aux, Pilha<Disco> destino) throws Exception {
         Jogo.limparConsole();
-        System.out.println("Pilha 1: " + origem.toString());
-        System.out.println("Pilha 2: " + aux.toString());
-        System.out.println("Pilha 3: " + destino.toString());
+        System.out.println(Jogo.desenhaPilha(origem));
+        System.out.println(Jogo.desenhaPilha(aux));
+        System.out.println(Jogo.desenhaPilha(destino));
+    }
+
+    private static Pilha<Disco> retornaPilhaInstancia(Integer id, Pilha<Disco> origem, Pilha<Disco> aux, Pilha<Disco> destino){
+        Pilha<Disco> pilhaRetorno = null;
+        switch (id){
+            case 1:
+                pilhaRetorno = origem;
+                break;
+            case 2:
+                pilhaRetorno = aux;
+                break;
+            case 3:
+                pilhaRetorno = destino;
+                break;
+        }
+        return pilhaRetorno;
     }
 }

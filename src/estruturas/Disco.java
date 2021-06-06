@@ -3,9 +3,11 @@ package estruturas;
 public class Disco {
 
     private Integer diametro;
+    private String desenho;
 
     public Disco(Integer diametro) {
         this.diametro = diametro;
+        this.desenho = this.desenhar(diametro);
     }
 
     public Integer getDiametro() {
@@ -18,6 +20,18 @@ public class Disco {
 
     @Override
     public String toString() {
-        return diametro.toString();
+        return getDesenho();
+    }
+
+    private String desenhar(Integer diametro){
+        String desenho = "";
+        for (int i = 0; i <= diametro; i++){
+            desenho += "=";
+        }
+        return desenho;
+    }
+
+    public String getDesenho() {
+        return desenho;
     }
 }
