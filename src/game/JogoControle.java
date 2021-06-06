@@ -25,16 +25,17 @@ public class JogoControle {
         destino.push(Jogo.getDisco(1000));
 
 
-        /*origem.push(Jogo.getDisco(5));
+        origem.push(Jogo.getDisco(5));
         origem.push(Jogo.getDisco(4));
         origem.push(Jogo.getDisco(3));
         origem.push(Jogo.getDisco(2));
-        origem.push(Jogo.getDisco(1));*/
         origem.push(Jogo.getDisco(1));
+
+        /*origem.push(Jogo.getDisco(1));
         destino.push(Jogo.getDisco(5));
         destino.push(Jogo.getDisco(4));
         destino.push(Jogo.getDisco(3));
-        destino.push(Jogo.getDisco(2));
+        destino.push(Jogo.getDisco(2));*/
 
 
         //System.out.println("Pilha origem: " + origem.toString());
