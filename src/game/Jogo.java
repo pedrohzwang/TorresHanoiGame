@@ -29,13 +29,40 @@ public class Jogo {
     }
 
     protected static String desenhaPilha(Pilha<Disco> pilha) throws Exception{
-        Pilha<Disco> pilhaTemp = pilha;
+        Disco discos[] = new Disco[6];
+        int contador = 5;
         String retorno = "";
-        while (!pilhaTemp.vazia()){
-            Disco temp = pilhaTemp.pop();
+        while (pilha.top().getDiametro() < 1000){
+            Disco temp = pilha.pop();
+            discos[contador] = temp;
+            contador--;
             retorno += temp.toString() + "\n";
+        }
+
+        for (int i = 0; i < discos.length; i++){
+            if (discos[i] != null/* && discos[i].getDiametro() > 0*/){
+                pilha.push(discos[i]);
+            }
         }
         return retorno;
     }
 
+    protected static boolean pilhaCheia(Pilha<Disco> pilha) throws Exception{
+        Disco discos[] = new Disco[6];
+        int contador = 5;
+        while (pilha.top().getDiametro() < 1000){
+            Disco temp = pilha.pop();
+            discos[contador] = temp;
+            contador--;
+        }
+
+        contador = 0;
+        for (int i = 0; i < discos.length; i++){
+            if (discos[i] != null){
+                pilha.push(discos[i]);
+                contador++;
+            }
+        }
+        return contador == 5;
+    }
 }
